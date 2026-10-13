@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pulse — Watch</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+</head>
+<body>
+  <div class="app" id="app">
+
+    <!-- TOP HEADER -->
+    <header class="top-header">
+      <div class="header-left">
+        <button class="icon-btn header-menu" id="menuToggle" title="Menu">
+          <i data-lucide="menu"></i>
+        </button>
+        <a href="#" class="logo" id="logoHome">
+          <div class="logo-icon">
+            <i data-lucide="zap"></i>
+          </div>
+          <span class="logo-text">Pulse</span>
+        </a>
+      </div>
+
+      <div class="header-search">
+        <div class="search-input-wrap">
+          <input type="text" placeholder="Search videos..." id="searchInput" />
+          <button class="search-btn" id="searchBtn" title="Search">
+            <i data-lucide="search"></i>
+          </button>
+        </div>
+        <button class="icon-btn search-mic" title="Search with your voice" id="micBtn">
+          <i data-lucide="mic"></i>
+        </button>
+      </div>
+
+      <div class="header-right">
+        <button class="icon-btn header-create" title="Post a video" id="postVideoBtn">
+          <i data-lucide="plus"></i>
+        </button>
+        <button class="icon-btn header-notif" title="Notifications" id="notifBtn">
+          <i data-lucide="bell"></i>
+          <span class="badge" id="notifBadge">2</span>
+        </button>
+        <div class="avatar avatar-gradient-1 header-avatar" title="Your profile" id="headerAvatar">A</div>
+      </div>
+    </header>
+
+    <!-- LEFT SIDEBAR -->
+    <aside class="sidebar" id="sidebar">
+      <nav class="sidebar-nav">
+        <a href="#" class="sidebar-item active" data-page="home">
+          <i data-lucide="home"></i>
+          <span>Home</span>
+        </a>
+        <a href="#" class="sidebar-item" data-page="shorts">
+          <i data-lucide="zap"></i>
+          <span>Shorts</span>
+        </a>
+        <a href="#" class="sidebar-item" data-page="following">
+          <i data-lucide="users"></i>
+          <span>Following</span>
+        </a>
+
+        <div class="sidebar-divider"></div>
+
+        <a href="#" class="sidebar-item" data-page="history">
+          <i data-lucide="history"></i>
+          <span>History</span>
+        </a>
+        <a href="#" class="sidebar-item" data-page="playlists">
+          <i data-lucide="list-video"></i>
+          <span>Playlists</span>
+        </a>
+        <a href="#" class="sidebar-item" data-page="watch-later">
+          <i data-lucide="clock"></i>
+          <span>Watch Later</span>
+        </a>
+        <a href="#" class="sidebar-item" data-page="liked">
+          <i data-lucide="thumbs-up"></i>
+          <span>Liked videos</span>
+        </a>
+
+        <div class="sidebar-divider"></div>
+
+        <div class="sidebar-section-title">Following</div>
+        <div id="sidebarFollowingList"></div>
+
+        <div class="sidebar-divider"></div>
+
+        <div class="sidebar-section-title">Explore</div>
+        <a href="#" class="sidebar-item" data-page="trending">
+          <i data-lucide="trending-up"></i>
+          <span>Trending</span>
+        </a>
+        <a href="#" class="sidebar-item" data-page="music">
+          <i data-lucide="music"></i>
+          <span>Music</span>
+        </a>
+        <a href="#" class="sidebar-item" data-page="gaming">
+          <i data-lucide="gamepad-2"></i>
+          <span>Gaming</span>
+        </a>
+        <a href="#" class="sidebar-item" data-page="sports">
+          <i data-lucide="trophy"></i>
+          <span>Sports</span>
+        </a>
+        <a href="#" class="sidebar-item" data-page="learning">
+          <i data-lucide="graduation-cap"></i>
+          <span>Learning</span>
+        </a>
+      </nav>
+
+      <div class="sidebar-footer">
+        <p>About Press Copyright Contact us Creators Advertise Developers</p>
+        <p>Terms Privacy Policy &amp; Safety How Pulse works Test new features</p>
+        <span>&copy; 2026 Pulse Corp.</span>
+      </div>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="main-content">
+
+      <!-- HOME VIEW -->
+      <div class="view active" id="view-home">
+        <div class="category-bar" id="categoryBar"></div>
+        <div class="video-grid" id="videoGrid"></div>
+      </div>
+
+      <!-- SHORTS VIEW -->
+      <div class="view" id="view-shorts">
+        <div class="view-header">
+          <i data-lucide="zap"></i>
+          <h1>Shorts</h1>
+        </div>
+        <div class="shorts-grid" id="shortsGrid"></div>
+      </div>
+
+      <!-- FOLLOWING VIEW -->
+      <div class="view" id="view-following">
+        <div class="view-header">
+          <i data-lucide="users"></i>
+          <h1>Following</h1>
+        </div>
+        <div class="video-grid" id="followingGrid"></div>
+      </div>
+
+      <!-- TRENDING VIEW -->
+      <div class="view" id="view-trending">
+        <div class="view-header">
+          <i data-lucide="trending-up"></i>
+          <h1>Trending</h1>
+        </div>
+        <div class="video-grid" id="trendingGrid"></div>
+      </div>
+
+      <!-- MUSIC VIEW -->
+      <div class="view" id="view-music">
+        <div class="view-header">
+          <i data-lucide="music"></i>
+          <h1>Music</h1>
+        </div>
+        <div class="video-grid" id="musicGrid"></div>
+      </div>
+
+      <!-- GAMING VIEW -->
+      <div class="view" id="view-gaming">
+        <div class="view-header">
+          <i data-lucide="gamepad-2"></i>
+          <h1>Gaming</h1>
+        </div>
+        <div class="video-grid" id="gamingGrid"></div>
+      </div>
+
+      <!-- SPORTS VIEW -->
+      <div class="view" id="view-sports">
+        <div class="view-header">
+          <i data-lucide="trophy"></i>
+          <h1>Sports</h1>
+        </div>
+        <div class="video-grid" id="sportsGrid"></div>
+      </div>
+
+      <!-- LEARNING VIEW -->
+      <div class="view" id="view-learning">
+        <div class="view-header">
+          <i data-lucide="graduation-cap"></i>
+          <h1>Learning</h1>
+        </div>
+        <div class="video-grid" id="learningGrid"></div>
+      </div>
+
+      <!-- HISTORY VIEW -->
+      <div class="view" id="view-history">
+        <div class="view-header">
+          <h1>Watch history</h1>
+          <button class="btn-outline" id="clearHistoryBtn">Clear all</button>
+        </div>
+        <div class="video-grid" id="historyGrid"></div>
+      </div>
+
+      <!-- PLAYLISTS VIEW -->
+      <div class="view" id="view-playlists">
+        <div class="view-header">
+          <h1>Playlists</h1>
+          <button class="btn-outline" id="createPlaylistBtn">New playlist</button>
+        </div>
+        <div class="playlists-grid" id="playlistsGrid"></div>
+      </div>
+
+      <!-- WATCH LATER VIEW -->
+      <div class="view" id="view-watch-later">
+        <div class="view-header">
+          <h1>Watch Later</h1>
+        </div>
+        <div class="video-grid" id="watchLaterGrid"></div>
+      </div>
+
+      <!-- LIKED VIEW -->
+      <div class="view" id="view-liked">
+        <div class="view-header">
+          <h1>Liked videos</h1>
+        </div>
+        <div class="video-grid" id="likedGrid"></div>
+      </div>
+
+    </main>
+
+    <!-- RIGHT SIDEBAR -->
+    <aside class="sidebar-right" id="sidebarRight">
+      <div class="widget">
+        <h3 class="widget-title">Trending channels</h3>
+        <div class="trending-channels-list" id="trendingChannelsList"></div>
+      </div>
+
+      <div class="widget">
+        <h3 class="widget-title">Who to follow</h3>
+        <div class="suggested-list" id="suggestedList"></div>
+      </div>
+
+      <footer class="sidebar-footer">
+        <a href="#">Terms of Service</a>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Cookie Policy</a>
+        <a href="#">Accessibility</a>
+        <a href="#">Ads info</a>
+        <span>&copy; 2026 Pulse Corp.</span>
+      </footer>
+    </aside>
+
+  </div>
+
+  <!-- POST VIDEO MODAL -->
+  <div class="modal-overlay" id="postModal">
+    <div class="modal post-modal">
+      <button class="modal-close" id="closePostModal">
+        <i data-lucide="x"></i>
+      </button>
+      <h2 class="modal-title">Post a video</h2>
+      <div class="post-form">
+        <div class="form-group">
+          <label for="videoTitle">Title</label>
+          <input type="text" id="videoTitle" placeholder="Give your video a title..." maxlength="100" />
+        </div>
+        <div class="form-group">
+          <label for="videoDesc">Description</label>
+          <textarea id="videoDesc" placeholder="Tell viewers about your video..." rows="4" maxlength="500"></textarea>
+        </div>
+        <div class="form-group">
+          <label for="videoCategory">Category</label>
+          <select id="videoCategory">
+            <option value="learning">Learning</option>
+            <option value="music">Music</option>
+            <option value="gaming">Gaming</option>
+            <option value="sports">Sports</option>
+            <option value="trending">Trending</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="videoDuration">Duration</label>
+          <input type="text" id="videoDuration" placeholder="e.g. 10:30" value="10:00" />
+        </div>
+        <div class="form-actions">
+          <button class="btn-outline" id="cancelPostBtn">Cancel</button>
+          <button class="btn-post-small" id="submitVideoBtn">Post video</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- VIDEO PLAYER MODAL -->
+  <div class="modal-overlay" id="videoModal">
+    <div class="modal video-modal">
+      <button class="modal-close" id="closeVideoModal">
+        <i data-lucide="x"></i>
+      </button>
+      <div class="video-player" id="videoPlayer">
+        <div class="video-placeholder" id="videoPlaceholder">
+          <div class="play-icon-large" id="playPlaceholderBtn">
+            <i data-lucide="play"></i>
+          </div>
+          <p>Click to play</p>
+        </div>
+        <div class="video-controls" id="videoControls" style="display:none;">
+          <div class="progress-bar" id="progressBar">
+            <div class="progress-fill" id="progressFill"></div>
+          </div>
+          <div class="controls-row">
+            <button class="control-btn" id="playPauseBtn" title="Play/Pause">
+              <i data-lucide="play"></i>
+            </button>
+            <button class="control-btn" id="volumeBtn" title="Volume">
+              <i data-lucide="volume-2"></i>
+            </button>
+            <span class="time-display" id="timeDisplay">0:00 / 0:00</span>
+            <div class="controls-spacer"></div>
+            <button class="control-btn" id="fullscreenBtn" title="Fullscreen">
+              <i data-lucide="maximize"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="video-info" id="videoInfo"></div>
+    </div>
+  </div>
+
+  <!-- CREATE PLAYLIST MODAL -->
+  <div class="modal-overlay" id="playlistModal">
+    <div class="modal post-modal">
+      <button class="modal-close" id="closePlaylistModal">
+        <i data-lucide="x"></i>
+      </button>
+      <h2 class="modal-title">Create playlist</h2>
+      <div class="post-form">
+        <div class="form-group">
+          <label for="playlistName">Playlist name</label>
+          <input type="text" id="playlistName" placeholder="My awesome playlist..." maxlength="50" />
+        </div>
+        <div class="form-actions">
+          <button class="btn-outline" id="cancelPlaylistBtn">Cancel</button>
+          <button class="btn-post-small" id="submitPlaylistBtn">Create</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TOAST CONTAINER -->
+  <div class="toast-container" id="toastContainer"></div>
+
+  <script src="app.js"></script>
+</body>
+</html>
